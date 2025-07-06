@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>J.A.R.V.I.S. Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="header">
+        <h1>J.A.R.V.I.S.</h1>
+            <p class="status">Just A Rather Very Intelligent System</p>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <button onclick="ejecutarHerramienta('nmap')">Nmap</button>
+            <button onclick="ejecutarHerramienta('hydra')">Hydra</button>
+            <button onclick="ejecutarHerramienta('metasploit')">Metasploit</button>
+            <button onclick="ejecutarHerramienta('masscan')">Masscan</button>
+            <button onclick="ejecutarHerramienta('tareas')">Tareas</button>
+        </div>
+        <div class="main">
+            <div class="console" id="consoleOutput"></div>
+            <input type="text" id="comandoInput" placeholder="Escribe un comando...">
+            <button onclick="enviarComando()">Enviar</button>
+        </div>
+        
+    </div>
+
+</body>
+</html>

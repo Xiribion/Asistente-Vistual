@@ -1,0 +1,73 @@
+body {
+    background: #111;
+    color: #0ff;
+    font-family: monospace;
+}
+
+.header {
+    text-align: center;
+    padding: 10px;
+    background: #222;
+}
+.container {
+    display: flex;
+}
+
+.status {
+    font-size: 1em;
+    color: #33ffcc;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+.sidebar {
+    width: 200px;
+    background: #222;
+    padding: 10px;
+}
+.sidebar button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    background: #333;
+    color: #0ff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.main {
+    flex: 1;
+    padding: 10px;
+}
+.console {
+    background: #000;
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+input[type="text"] {
+    width: 80%;
+    padding: 5px;
+}
+#comandoInput {
+    padding: 5px;
+    border: none;
+    background: rgba(0, 255, 255, 0.1);
+    color: #00ffff;
+    font-size: 1em;
+    outline: none;
+    border-radius: 6px;
+}
+button{
+    background: #333;
+    color: #0ff;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
