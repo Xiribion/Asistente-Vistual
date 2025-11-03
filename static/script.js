@@ -5,10 +5,10 @@ function enviarComando() {
     const consoleOutput = document.getElementById('consoleOutput');
     consoleOutput.innerHTML += `<div class="user-msg">> ${input}</div>`;
 
-    fetch('/comando', {
+    fetch('/mensaje', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ comando: input })
+        body: JSON.stringify({ mensaje: input })
     })
     .then(response => response.json())
     .then(data => {

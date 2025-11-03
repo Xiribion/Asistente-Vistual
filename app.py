@@ -15,13 +15,6 @@ def mensaje():
     respuesta = procesar_texto(texto_usuario)  # Llama a tu función existente
     return jsonify({'respuesta': respuesta})
 
-@app.route('/comando', methods=['POST'])
-def comando():
-    data = request.json
-    texto = data.get('comando', '')
-    # guarda tu procesamiento real aquí:
-    respuesta = procesar_texto(texto)
-    return jsonify({'respuesta': respuesta})
 
 tools = {
     'nmap': escanear_nmap,
