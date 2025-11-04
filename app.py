@@ -1,11 +1,28 @@
 from flask import Flask, render_template, request, jsonify
 # Importa aquí tu integración con Jarvis
-from jarvis_ollama import procesar_texto, escanear_nmap, fuerza_bruta_hydra, exploit_metasploit, escanear_con_masscan, cargar_tareas, obtener_tareas_pendientes  # from tu_module import procesar_texto, herramientas_avanzadas...
-
+#from jarvis_ollama import procesar_texto, escanear_nmap, fuerza_bruta_hydra, exploit_metasploit, escanear_con_masscan, cargar_tareas, obtener_tareas_pendientes  # from tu_module import procesar_texto, herramientas_avanzadas...
+from importlib import import_module
 
 def crear_app():
-
+    
     app = Flask(__name__)
+    
+    # Import lazy del módulo que contiene lógica pesada/local
+    try:
+        jarvis = import_module("jarvis_ollama")
+    except Exception as e:
+        # Si falla, registramos y usamos stubs seguros
+        jarvis = None
+        print("Advertencia: no se pudo importar jarvis_ollama:", e)
+    
+        # Referencias seguras a las funciones (si no existen, usamos fallback)
+    procesar_texto = getattr(jarvis, "procesar_texto", None)
+    escanear_nmap = getattr(jarvis, "escanear_nmap", lambda: "No disponible")
+    fuerza_bruta_hydra = getattr(jarvis, "fuerza_bruta_hydra", lambda: "No disponible")
+    exploit_metasploit = getattr(jarvis, "exploit_metasploit", lambda: "No disponible")
+    escanear_con_masscan = getattr(jarvis, "escanear_con_masscan", lambda: "No disponible")
+    cargar_tareas = getattr(jarvis, "cargar_tareas", lambda: [])
+
     @app.route('/')
     def index():
         return render_template('index.html')
