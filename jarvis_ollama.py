@@ -43,6 +43,30 @@ from auditoria import auditoria_rapida, auditoria_completa
 from herramientas_avanzadas import *
 
 
+# Detectamos si estamos en Render (o en cualquier entorno 'web')
+IS_RENDER = os.getenv("RENDER", "false").lower() in ("1", "true", "yes")
+
+# Importaciones seguras: sólo cargar módulos de audio/GUI si NO estamos en Render
+if not IS_RENDER:
+    try:
+        import speech_recognition as sr
+        import pyttsx3
+        import tkinter as tk
+        # cualquier otra librería que requiera audio/GUIs
+    except Exception:
+        # Si falla la importación localmente, dejamos variables a None
+        sr = None
+        pyttsx3 = None
+        tk = None
+else:
+    # En Render: no cargamos estas librerías
+    sr = None
+    pyttsx3 = None
+    tk = None
+
+
+
+
 ###########################################
 # CONFIGURACIÓN Y VARIABLES GLOBALES
 ###########################################
