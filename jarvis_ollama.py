@@ -820,7 +820,12 @@ def recomendar_accion():
 ###########################################
 
 def generar_respuesta_ollama(prompt: str) -> str:
-    url = "http://localhost:11434/api/generate"
+    # LOCAL
+    # url = "http://localhost:11434/api/generate"
+
+    # RENDER
+    url = "https://facilitate-nerve-reporters-favourite.trycloudflare.com/api/generate"
+    
     data = {"model": "llama3:8b-instruct-q4_0", "prompt": prompt, "stream": False}
     try:
         resp = requests.post(url, json=data)
